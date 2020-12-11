@@ -1,0 +1,51 @@
+{
+  "name": "beauty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-packager . Meibangzhu --platform=win32 --out ./package --app-version 1.0.1 --electron-version=10.1.5 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --ignore=\"(.git)\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  },
+  "build": {
+    "productName": "electron-demos",
+    "files": [
+      "dist/",
+      "main.js"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "directories": {
+      "output": "release"
+    }
+  }
+}
