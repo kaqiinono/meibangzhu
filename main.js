@@ -7,8 +7,8 @@ Menu.setApplicationMenu(null);
 function createWindow() {
     // 关闭顶部导航菜单栏
     const win = new BrowserWindow({
-        width: 1025,
-        height: 700,
+        width: 1288,
+        height: 858,
         // fullscreen:true,//全屏展示
         center: true, // 窗口居中
         resizable: true, // 窗口大小是否可改变
@@ -55,9 +55,10 @@ ipcMain.on("on-back-up", (event, data, name) => {
             if (err) {
                 event.reply("on-back-up", "文件备份失败，路径：" + file);
                 console.log('error:',err);
-            } else {
-                event.reply("on-back-up", "文件备份成功，路径：" + file);
             }
+            // else {
+            //     event.reply("on-back-up", "文件备份成功，路径：" + file);
+            // }
         })
     }
 })
