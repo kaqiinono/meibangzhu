@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "electron-packager . Meibangzhu --platform=win32 --out ./package --app-version 1.0.1 --electron-version=10.1.5 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --ignore=\"(.git)\" "
+    "package": "electron-packager . Meibangzhu --platform=win32 --out ./package --overwrite --app-version 1.0.1 --electron-version=10.1.5 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --ignore=\"(.git)\" "
   },
   "keywords": [],
   "author": "",
