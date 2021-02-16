@@ -24,7 +24,7 @@ function createWindow() {
 
     win.loadFile('./app/index.html')
     // win.loadURL('http://localhost:8000/?#/vip')
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)
