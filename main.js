@@ -24,7 +24,7 @@ function createWindow() {
 
     win.loadFile('./app/index.html')
     // win.loadURL('http://localhost:8000/?#/vip')
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)
@@ -42,7 +42,7 @@ app.on('activate', () => {
 })
 
 
-ipcMain.on("on-back-up", (event, data, name) => {
+ipcMain.handle("on-back-up", (event, data, name) => {
     if (data) {
         const path = require('path');
         const _path = path.join(__dirname, 'backup');
@@ -54,30 +54,31 @@ ipcMain.on("on-back-up", (event, data, name) => {
         }
         fs.writeFile(file, data && JSON.stringify(data), function (err) {
             if (err) {
-                event.reply("on-back-up", "文件备份失败，路径：" + file);
                 console.log('error:', err);
+                return "文件备份失败，路径：" + file;
             } else {
-                event.reply("on-back-up", "文件备份成功，路径：" + file);
+                return "文件备份成功，路径：" + file;
             }
         })
     }
 })
 
-ipcMain.on("on-import", (event, fileName) => {
+ipcMain.handle("on-import", (event, fileName) => {
+    console.log('on-importing==>')
     if (fileName) {
         const path = require('path');
         const _path = path.join(__dirname, 'backup');
         const file = path.join(_path, fileName);
 
         if (!fs.existsSync(file)) {
-            event.reply("on-import", {
+            return {
                 success: false,
                 message: "文件不存在，路径：" + file
-            });
+            }
         }
-        event.reply("on-import", {
+        return {
             success: true,
             data: require(file)
-        });
+        }
     }
 })
